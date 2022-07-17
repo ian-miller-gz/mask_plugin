@@ -1,0 +1,5 @@
+**/Builds
+**/JuceLibraryCode
+*.filtergraph
+**/Filters
+
