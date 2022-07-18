@@ -14,7 +14,9 @@
 //==============================================================================
 /**
 */
-class Mask_pluginAudioProcessorEditor  : public juce::AudioProcessorEditor
+class Mask_pluginAudioProcessorEditor  : 
+    public juce::AudioProcessorEditor,
+    juce::Timer
 {
 public:
     Mask_pluginAudioProcessorEditor (Mask_pluginAudioProcessor&);
@@ -23,6 +25,7 @@ public:
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
+    void timerCallback() override;
 
 private:
     // This reference is provided as a quick way for your editor to

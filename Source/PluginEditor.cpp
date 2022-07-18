@@ -9,13 +9,20 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+void Mask_pluginAudioProcessorEditor::timerCallback()
+{
+    this->repaint();
+}
+
 //==============================================================================
 Mask_pluginAudioProcessorEditor::Mask_pluginAudioProcessorEditor (Mask_pluginAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (400, 300);
+    setSize (800, 600);
+
+    this->startTimerHz(60);
 }
 
 Mask_pluginAudioProcessorEditor::~Mask_pluginAudioProcessorEditor()
@@ -30,7 +37,6 @@ void Mask_pluginAudioProcessorEditor::paint (juce::Graphics& g)
 
     g.setColour (juce::Colours::white);
     g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
 }
 
 void Mask_pluginAudioProcessorEditor::resized()

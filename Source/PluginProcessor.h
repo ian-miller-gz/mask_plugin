@@ -10,15 +10,27 @@
 
 #include <JuceHeader.h>
 
+class APTimer : public juce::Timer
+{
+public:
+    void timerCallback() override;
+
+private:
+    bool active = false;
+
+};
+
 //==============================================================================
 /**
 */
-class Mask_pluginAudioProcessor  : public juce::AudioProcessor
+class Mask_pluginAudioProcessor  : 
+    public juce::AudioProcessor
                             #if JucePlugin_Enable_ARA
                              , public juce::AudioProcessorARAExtension
                             #endif
 {
 public:
+
     //==============================================================================
     Mask_pluginAudioProcessor();
     ~Mask_pluginAudioProcessor() override;
@@ -58,5 +70,7 @@ public:
 
 private:
     //==============================================================================
+    APTimer timer;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Mask_pluginAudioProcessor)
 };
